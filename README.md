@@ -20,7 +20,7 @@
   addresses this challenge, utilizing advanced algorithms to create a responsive traffic 
   management system, aiming to alleviate congestion and enhance urban mobility.
 
-### 3.2 Modul0e Description:
+### 3.2 Module Description:
   The `bfsReachableCities` function employs a Breadth-First Search (BFS) algorithm to 
   determine and display cities reachable from a given source city within a specified road 
   limit. The function takes two parameters: `src` representing the source city's index and 
