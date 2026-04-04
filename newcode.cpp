@@ -19,6 +19,53 @@
 
 using namespace std;
 
+#if defined(_WIN32) && !defined(_GLIBCXX_HAS_GTHREADS)
+#include <windows.h>
+namespace std {
+    class mutex {
+        CRITICAL_SECTION cs;
+    public:
+        mutex() { InitializeCriticalSection(&cs); }
+        ~mutex() { DeleteCriticalSection(&cs); }
+        void lock() { EnterCriticalSection(&cs); }
+        void unlock() { LeaveCriticalSection(&cs); }
+    };
+    namespace this_thread {
+        template <class Rep, class Period>
+        void sleep_for(const std::chrono::duration<Rep, Period>& rel_time) {
+            auto ms = std::chrono::duration_cast<std::chrono::milliseconds>(rel_time).count();
+            Sleep(ms);
+        }
+    }
+    class thread {
+        HANDLE h;
+    public:
+        thread() : h(nullptr) {}
+        template <typename Func, typename Obj>
+        thread(Func f, Obj obj) {
+            struct Context { Func f; Obj obj; };
+            Context* ctx = new Context{f, obj};
+            h = CreateThread(NULL, 0, [](LPVOID param) WINAPI -> DWORD {
+                Context* c = static_cast<Context*>(param);
+                auto func = c->f;
+                auto object = c->obj;
+                (object->*func)();
+                delete c;
+                return 0;
+            }, ctx, 0, NULL);
+        }
+        bool joinable() const { return h != nullptr; }
+        void join() {
+            if (h) {
+                WaitForSingleObject(h, INFINITE);
+                CloseHandle(h);
+                h = nullptr;
+            }
+        }
+    };
+}
+#endif
+
 // ==========================================
 // TERMINAL UI & STYLING SUBSYSTEM
 // ==========================================
@@ -497,7 +544,7 @@ public:
         if(cities.empty()) return;
                 
         unordered_set<int> inMST;
-        priority_queue<pair<double, pair<int, int>>, vector<pair<double, pair<int, int>>>, greater<>> pq;
+        priority_queue<pair<double, pair<int, int>>, vector<pair<double, pair<int, int>>>, greater<pair<double, pair<int, int>>>> pq;
         double totalInfraCost = 0;
 
         int startNode = cities.begin()->first;
