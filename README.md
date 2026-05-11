@@ -1,8 +1,8 @@
-# Nexus Traffic Intelligence Node v9.0
+# Graph-Based Route Planner System (Nexus Traffic Intelligence Node)
 
 A massively scalable, enterprise-grade traffic, routing, and parking management simulation built in modern C++. This project evolved from a procedural C script into a deeply modular, multithreaded, Object-Oriented C++ architecture, complete with advanced graph algorithms, real-time background simulations, and a fully stylized Terminal UI.
 
-## í³‘ Table of Contents
+## ï¿½ï¿½ï¿½ Table of Contents
 1. [Key Enterprise Features](#-key-enterprise-features)
 2. [Role-Based Access Control (RBAC)](#-role-based-access-control-rbac)
 3. [Interactive Terminal Capabilities](#ï¸-interactive-terminal-capabilities)
@@ -16,7 +16,7 @@ A massively scalable, enterprise-grade traffic, routing, and parking management 
 
 ---
 
-## íº€ Key Enterprise Features
+## ï¿½ï¿½ï¿½ Key Enterprise Features
 
 * **Vibrant Terminal UI (CLI):** Fully styled console interface utilizing ANSI escape codes, animated progress bars, padded tabular layouts, and ASCII art dashboards for maximum readability and immersion.
 * **Multithreaded Live Simulation:** A background process utilizing native system threads continuously simulates dynamic traffic congestion and weather shifts over time without interrupting the user.
@@ -33,17 +33,17 @@ A massively scalable, enterprise-grade traffic, routing, and parking management 
 
 ---
 
-## í´ Role-Based Access Control (RBAC)
+## ï¿½ï¿½ï¿½ Role-Based Access Control (RBAC)
 
 The system implements strict permission gating through four core operational clearances:
-* í´´ **Admin:** Highest clearance. Unrestricted access to all features, infrastructure management, and economy oversight.
-* í´µ **Police:** Law Enforcement. Authorized to alter traffic flow (blockades) and issue financial citations to users.
-* í¿¢ **Driver:** Basic civilian clearance. Authorized to calculate routes, reserve parking, and manage personal vehicles. Emergency Medical Services (EMS) inherit this role with special bypass flags.
-* í¿£ **Analyst:** Engineering and accounting clearance. Permitted to process graph calculations (MST) and view global tolls/revenues.
+* ï¿½ï¿½ï¿½ **Admin:** Highest clearance. Unrestricted access to all features, infrastructure management, and economy oversight.
+* ï¿½ï¿½ï¿½ **Police:** Law Enforcement. Authorized to alter traffic flow (blockades) and issue financial citations to users.
+* ï¿½ï¿½ï¿½ **Driver:** Basic civilian clearance. Authorized to calculate routes, reserve parking, and manage personal vehicles. Emergency Medical Services (EMS) inherit this role with special bypass flags.
+* ï¿½ï¿½ï¿½ **Analyst:** Engineering and accounting clearance. Permitted to process graph calculations (MST) and view global tolls/revenues.
 
 ---
 
-## í¶¥ï¸ Interactive Terminal Capabilities
+## ï¿½ï¿½ï¿½ï¸ Interactive Terminal Capabilities
 
 Below is the detailed list of runtime functions available via the primary application interface. Functions are strictly scoped based on the operator's role.
 
@@ -78,7 +78,7 @@ Below is the detailed list of runtime functions available via the primary applic
 
 ---
 
-## í¿—ï¸ Architectural Subsystems (`newcode.cpp`)
+## ï¿½ï¿½ï¿½ï¸ Architectural Subsystems (`newcode.cpp`)
 
 1. **Terminal UI & Styling:** Abstracts cross-platform console clearing, color rendering, and data table layouts.
 2. **Utility & Logging:** Async file streams with mutex locks to record system events.
@@ -114,7 +114,7 @@ Run the compiled executable output (Use `./nexustraffic` on Linux/Bash, `.\nexus
 
 ---
 
-## í´‘ Default Test Credentials
+## ï¿½ï¿½ï¿½ Default Test Credentials
 
 | Username | Password | Role | Features |
 | :--- | :--- | :--- | :--- |
@@ -126,5 +126,5 @@ Run the compiled executable output (Use `./nexustraffic` on Linux/Bash, `.\nexus
 
 ---
 
-## í³Š Logs & Auditing
+## ï¿½ï¿½ï¿½ Logs & Auditing
 All system events, logins, ticket distributions, routing traces, and infrastructure errors are pushed to `system_events.log` in real-time. Monitor this file for strict auditing records.
